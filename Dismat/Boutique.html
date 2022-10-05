@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/CrossIcone.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="Boutique.css" />
+    <title>Boutique</title>
+  </head>
+
+  <body onload="loadArticles()">
+    <div class="container mt-4">
+      <div class="row mb-2">
+        <div class="col-md-3 font-weight-bold logo">
+          <a href="Index.html"><img src="img/logo.png" alt="logo" /></a>
+        </div>
+        <div class="col-md-9">
+          <button
+            class="btn btn-secondary btn-sm float-end"
+            data-toggle="modal"
+            data-target="#myModal"
+            onclick="VoirPanier()"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row mb-2" id="Contenue"></div>
+    </div>
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+      id="myModal"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content modal-content bg-dark bg-opacity-50">
+          <div class="modal-header">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <button
+              type="button"
+              class="close btn btn-danger"
+              data-dismiss="modal"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-responsive{-sm|-md|-lg|-xl}">
+              <thead>
+                <tr>
+                  <th>
+                    <center>Aperçu</center>
+                  </th>
+                  <th>
+                    <center>Libelle</center>
+                  </th>
+                  <th>
+                    <center>Quantite</center>
+                  </th>
+                  <th>
+                    <center>Montant</center>
+                  </th>
+                  <th>
+                    <center>Action</center>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="contenuePanier"></tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success float-end"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#mysecondModal"
+            >
+              Valider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="modal fade" id="mysecondModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">INFORMATIONS</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="row">
+                <div>
+                  <p>Prenom</p>
+                </div>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Prenom"
+                    required
+                  />
+                </div>
+                <div>
+                  <p>Nom</p>
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" id="Nom" required />
+                </div>
+                <div>
+                  <p>Adresse</p>
+                </div>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Adresse"
+                    required
+                  />
+                </div>
+                <div>
+                  <p>Telephone</p>
+                </div>
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Telephone"
+                    required
+                  />
+                </div>
+                <div style="height: 120px"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-success"
+                onclick="enregistrement()"
+                data-dismiss="modal"
+                data-toggle="modal"
+                data-target="#mylastModal"
+              >
+                Comfirmer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="mylastModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">FACTURE</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container Contenue">
+              <div class="col-md-8" id="Contenue ">
+                <div>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th colspan="4">INFORMATIONS</th>
+                      </tr>
+                    </thead>
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Adresse</th>
+                        <th>Telephone</th>
+                      </tr>
+                    </thead>
+                    <tbody id="InformationContent"></tbody>
+                  </table>
+                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="2">MouhamedShop</th>
+                    </tr>
+                  </thead>
+                  <thead>
+                    <tr>
+                      <th>LIBELLE</th>
+                      <th>PRIX</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contenueFacture"></tbody>
+                  <tbody>
+                    <tr>
+                      <th>
+                        <center>Total</center>
+                      </th>
+                      <td id="FactureTotal" class="text-align-center"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="">
+              <button class="btn btn-success">Telecharger</button>
+            </a>
+            <a href="">
+              <button class="btn btn-success">Imprimer</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <script src="Boite.js"></script>
+    <script src="Boutique.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

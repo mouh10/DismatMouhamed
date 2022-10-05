@@ -1,0 +1,54 @@
+.Contenue {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.Card-Panier {
+    display: flex;
+}
+
+.Pnier {
+    width: 200px;
+    height: 200px;
+}
+
+span {
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+.table {
+    color: white;
+}
+
+.table th {
+    font-size: 25px;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+.table td {
+    font-size: 20px;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+.modal-header .fa-cart-shopping {
+    color: white;
+    font-size: 20px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+
+.logo img {
+    width: 100px;
+    height: 50px;
+}
+
+table td img {
+    width: 100%;
+    height: 100%;
+}
